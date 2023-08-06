@@ -67,6 +67,82 @@ npm run client
 
 You should see a randomly selected quote printed on the console.
 
+## More about?
+
+### Example 1: Start the Server
+
+```bash
+npm start
+```
+
+This command starts the gRPC server, and it will listen on port 50051 by default.
+
+### Example 2: Request a Random Quote - Client
+
+```typescript
+// client.ts
+
+import * as grpc from '@grpc/grpc-js';
+import { QuoteGeneratorClient } from './generated/quote_generator_grpc_pb';
+import { Empty } from './generated/quote_generator_pb';
+
+const client = new QuoteGeneratorClient('localhost:50051', grpc.credentials.createInsecure());
+
+client.getRandomQuote(new Empty(), (err, response) => {
+  if (err) {
+    console.error('Error:', err.message);
+  } else {
+    console.log('Random Quote:', response.getQuote());
+  }
+});
+```
+
+To run the client:
+
+```bash
+npm run client
+```
+
+This client script will connect to the gRPC server and request a random quote. The server will respond with a randomly selected quote, and the client will print it to the console.
+
+### Example 3: Server-side Interceptor
+
+```typescript
+// server_interceptor.ts
+
+import * as grpc from '@grpc/grpc-js';
+import { QuoteGeneratorClient } from './generated/quote_generator_grpc_pb';
+import { Empty } from './generated/quote_generator_pb';
+
+function quoteInterceptor(options: grpc.InterceptorOptions, nextHandler: grpc.InterceptorNext<QuoteGeneratorClient>): grpc.InterceptorHandle<QuoteGeneratorClient> {
+  return new grpc.InterceptingCall(nextHandler(options), {
+    start: (metadata, listener, next) => {
+      console.log('Incoming request for a random quote.');
+      next(metadata, listener);
+    },
+    sendMessage: (message, next) => {
+      console.log('Sending quote response:', message.toObject());
+      next(message);
+    },
+    receiveMessage: (message, next) => {
+      console.log('Received quote response:', message.toObject());
+      next(message);
+    },
+    halfClose: (next) => {
+      console.log('Client closed the stream.');
+      next();
+    },
+    cancel: (message, next) => {
+      console.log('RPC canceled by the client.');
+      next(message);
+    },
+  });
+}
+
+// Add the interceptor to the server
+server.addService(QuoteGeneratorService, { getRandomQuote: quoteInterceptor });
+```
+
 ## Contributing
 
 Contributions to the Random Quote Generator project are welcome! If you have any ideas for improvements, bug fixes, or new features, feel free to submit a pull request.
