@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package quote;
+
+service QuoteService {
+    rpc FindOneQuoteById (FindOneQuoteByIdDto) returns (Quote) {};
+    rpc CreateQuote(CreateQuoteDto) returns (Quote){}
+    rpc RemoveQuoteById(FindOneQuoteByIdDto) returns (Quote) {}
+    rpc UpdateQuote(UpdateQuoteDto) returns (Quote){}
+}
+
+message Quote {
+    string id = 1;
+    string content = 2;
+    string author = 3;
+}
+
+message FindOneQuoteByIdDto {
+    string id = 1;
+}
+
+message CreateQuoteDto {
+    string content = 1;
+    string author = 2;
+}
+
+message UpdateQuoteDto {
+    string id = 1;
+    optional string content = 2;
+    optional string author = 3;
+}

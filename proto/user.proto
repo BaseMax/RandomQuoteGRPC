@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package user;
+
+service UsersService {
+  rpc CreateUser (CreateUserDto) returns (User) {}
+  rpc FindAllUsers (Empty) returns (Users) {}
+  rpc FindOneUserById (FindOneUserByIdDto) returns (User) {}
+  rpc FindOneUserByUsername (FindOneUserByUsernameDto) returns (User) {}
+  rpc RemoveUser (FindOneUserByIdDto) returns (User) {}
+}
+
+message FindOneUserByIdDto {
+  string id = 1;
+}
+
+message FindOneUserByUsernameDto {
+  string id = 1;
+}
+
+
+message Empty {};
+
+message Users {
+  repeated User users = 1;
+}
+
+message CreateUserDto {
+  string username = 1;
+  string password = 2;
+}
+
+message User {
+  string id = 1;
+  string username = 2;
+  string password = 3;
+}
+
