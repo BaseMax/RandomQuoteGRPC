@@ -12,12 +12,14 @@ Before running the Random Quote Generator server, make sure you have the followi
 ## Installation
 
 Clone this repository to your local machine:
+
 ```bash
-git clone https://github.com/yourusername/random-quote-generator-grpc.git
-cd random-quote-generator-grpc
+git clone https://github.com/yourusername/apigateway-generator-grpc.git
+cd apigateway-generator-grpc
 ```
 
 Install the required dependencies:
+
 ```bash
 npm install
 ```
@@ -25,6 +27,7 @@ npm install
 ## Usage
 
 Compile the .proto file and generate gRPC TypeScript code:
+
 ```bash
 npm run build:grpc
 ```
@@ -48,7 +51,10 @@ import * as grpc from '@grpc/grpc-js';
 import { QuoteGeneratorClient } from './generated/quote_generator_grpc_pb';
 import { Empty } from './generated/quote_generator_pb';
 
-const client = new QuoteGeneratorClient('localhost:50051', grpc.credentials.createInsecure());
+const client = new QuoteGeneratorClient(
+  'localhost:50051',
+  grpc.credentials.createInsecure(),
+);
 
 client.getRandomQuote(new Empty(), (err, response) => {
   if (err) {
@@ -86,7 +92,10 @@ import * as grpc from '@grpc/grpc-js';
 import { QuoteGeneratorClient } from './generated/quote_generator_grpc_pb';
 import { Empty } from './generated/quote_generator_pb';
 
-const client = new QuoteGeneratorClient('localhost:50051', grpc.credentials.createInsecure());
+const client = new QuoteGeneratorClient(
+  'localhost:50051',
+  grpc.credentials.createInsecure(),
+);
 
 client.getRandomQuote(new Empty(), (err, response) => {
   if (err) {
@@ -114,7 +123,10 @@ import * as grpc from '@grpc/grpc-js';
 import { QuoteGeneratorClient } from './generated/quote_generator_grpc_pb';
 import { Empty } from './generated/quote_generator_pb';
 
-function quoteInterceptor(options: grpc.InterceptorOptions, nextHandler: grpc.InterceptorNext<QuoteGeneratorClient>): grpc.InterceptorHandle<QuoteGeneratorClient> {
+function quoteInterceptor(
+  options: grpc.InterceptorOptions,
+  nextHandler: grpc.InterceptorNext<QuoteGeneratorClient>,
+): grpc.InterceptorHandle<QuoteGeneratorClient> {
   return new grpc.InterceptingCall(nextHandler(options), {
     start: (metadata, listener, next) => {
       console.log('Incoming request for a random quote.');
