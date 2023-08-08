@@ -2,12 +2,17 @@
 import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
 
+export interface RemoveUserCount {
+  count: number;
+  hasDeleted: boolean;
+}
+
 export interface FindOneUserByIdDto {
   id: string;
 }
 
 export interface FindOneUserByUsernameDto {
-  id: string;
+  username: string;
 }
 
 export interface Empty {}
@@ -36,9 +41,9 @@ export interface UsersServiceClient {
 
   findOneUserById(request: FindOneUserByIdDto): Observable<User>;
 
-  findOneUserByUsername(request: FindOneUserByUsernameDto): Observable<User>;
+  findOneUserByUsername(request: FindOneUserByUsernameDto): Promise<User>;
 
-  removeUser(request: FindOneUserByIdDto): Observable<User>;
+  removeUser(request: FindOneUserByIdDto): Observable<RemoveUserCount>;
 }
 
 export interface UsersServiceController {
@@ -56,7 +61,7 @@ export interface UsersServiceController {
 
   removeUser(
     request: FindOneUserByIdDto,
-  ): Promise<User> | Observable<User> | User;
+  ): Promise<RemoveUserCount> | Observable<RemoveUserCount> | RemoveUserCount;
 }
 
 export function UsersServiceControllerMethods() {

@@ -7,7 +7,12 @@ service UsersService {
   rpc FindAllUsers (Empty) returns (Users) {}
   rpc FindOneUserById (FindOneUserByIdDto) returns (User) {}
   rpc FindOneUserByUsername (FindOneUserByUsernameDto) returns (User) {}
-  rpc RemoveUser (FindOneUserByIdDto) returns (User) {}
+  rpc RemoveUser (FindOneUserByIdDto) returns (RemoveUserCount) {}
+}
+
+message RemoveUserCount {
+  int32 count = 1;
+  bool hasDeleted = 2;
 }
 
 message FindOneUserByIdDto {
@@ -15,7 +20,7 @@ message FindOneUserByIdDto {
 }
 
 message FindOneUserByUsernameDto {
-  string id = 1;
+  string username = 1;
 }
 
 

@@ -4,7 +4,6 @@ package auth;
 
 service AuthService {
   rpc Login(LoginDto) returns (AuthToken) {}
-  rpc Register (RegisterDto) returns (AuthToken) {}
 }
 
 message AuthToken {
@@ -14,10 +13,4 @@ message AuthToken {
 message LoginDto {
   string username = 1;
   string password = 2;
-}
-
-message RegisterDto {
-  string username = 1;
-  string password = 2;
-  string role = 3;
 }
