@@ -1,8 +1,33 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { UserModel } from './user.model';
+import { Model } from 'mongoose';
+import { CreateUserDto } from '@app/common';
 
 @Injectable()
 export class UserService {
-  getHello(): string {
-    return 'Hello World!';
+  constructor(
+    @InjectModel(UserModel.name) private userModel: Model<UserModel>,
+  ) {}
+
+  findOneById(id: string) {
+    return this.userModel.findById(id);
+  }
+
+  findOneByUsername(username: string) {
+    return this.userModel.findOne({ username });
+  }
+
+  findAll() {
+    return this.userModel.find({});
+  }
+
+  createUser(createUserDto: CreateUserDto) {
+    return this.userModel.create(createUserDto);
+  }
+
+  async removeOne(id: string) {
+    const result = await this.userModel.deleteOne({ id });
+    return { count: result.deletedCount, hasDeleted: result.acknowledged };
   }
 }
