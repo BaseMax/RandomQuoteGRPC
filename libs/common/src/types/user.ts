@@ -41,7 +41,7 @@ export interface UsersServiceClient {
 
   findOneUserById(request: FindOneUserByIdDto): Observable<User>;
 
-  findOneUserByUsername(request: FindOneUserByUsernameDto): Promise<User>;
+  findOneUserByUsername(request: FindOneUserByUsernameDto): Observable<User>;
 
   removeUser(request: FindOneUserByIdDto): Observable<RemoveUserCount>;
 }

@@ -10,7 +10,8 @@ async function bootstrap() {
     {
       transport: Transport.GRPC,
       options: {
-        protoPath: join(__dirname, '../auth.proto'), // configure in nest-cli assets
+        url: '0.0.0.0:3001',
+        protoPath: join(__dirname, '../../auth/auth.proto'), // configure in nest-cli assets
         package: AUTH_PACKAGE_NAME,
       },
     },

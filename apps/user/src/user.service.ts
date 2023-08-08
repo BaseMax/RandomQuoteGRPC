@@ -14,8 +14,13 @@ export class UserService {
     return this.userModel.findById(id);
   }
 
-  findOneByUsername(username: string) {
-    return this.userModel.findOne({ username });
+  async findOneByUsername(username: string) {
+    console.log('FIND ONE BY USERNAME "CALLED" WITH', username);
+    const user = await this.userModel.findOne({ username });
+    console.log({ user });
+
+    if (!user) return { id: null, password: null, username: null };
+    return user;
   }
 
   findAll() {

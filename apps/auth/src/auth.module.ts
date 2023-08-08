@@ -1,4 +1,4 @@
-import { USERS_SERVICE_NAME, USER_PACKAGE_NAME } from '@app/common';
+import { USER_PACKAGE_NAME } from '@app/common';
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { join } from 'path';
@@ -9,9 +9,10 @@ import { AuthController } from './auth.controller';
   imports: [
     ClientsModule.register([
       {
-        name: USERS_SERVICE_NAME,
+        name: 'USER_PACKAGE',
         transport: Transport.GRPC,
         options: {
+          url: '0.0.0.0:3002',
           package: USER_PACKAGE_NAME,
           protoPath: join(__dirname, '../user.proto'),
         },

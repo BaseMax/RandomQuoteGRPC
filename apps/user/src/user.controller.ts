@@ -33,9 +33,7 @@ export class UserController implements UsersServiceController {
   ): User | Promise<User> | Observable<User> {
     return this.userService.findOneById(request.id);
   }
-  findOneUserByUsername(
-    request: FindOneUserByUsernameDto,
-  ): User | Promise<User> | Observable<User> {
+  findOneUserByUsername(request: FindOneUserByUsernameDto): Promise<User> {
     return this.userService.findOneByUsername(request.username);
   }
 }
