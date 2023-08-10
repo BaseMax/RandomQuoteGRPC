@@ -4,6 +4,8 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 import { join } from 'path';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
+import { APP_FILTER } from '@nestjs/core';
+import { GrpcServerExceptionFilter } from 'nestjs-grpc-exceptions';
 
 @Module({
   imports: [
@@ -20,6 +22,12 @@ import { AuthController } from './auth.controller';
     ]),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    {
+      provide: APP_FILTER,
+      useClass: GrpcServerExceptionFilter,
+    },
+  ],
 })
 export class AuthModule {}

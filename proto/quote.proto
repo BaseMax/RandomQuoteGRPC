@@ -5,8 +5,18 @@ package quote;
 service QuoteService {
     rpc FindOneQuoteById (FindOneQuoteByIdDto) returns (Quote) {};
     rpc CreateQuote(CreateQuoteDto) returns (Quote){}
-    rpc RemoveQuoteById(FindOneQuoteByIdDto) returns (Quote) {}
-    rpc UpdateQuote(UpdateQuoteDto) returns (Quote){}
+    rpc RemoveQuoteById(FindOneQuoteByIdDto) returns (RemoveQuoteCount) {}
+    rpc UpdateQuote(UpdateQuoteDto) returns (UpdateQuoteCount){}
+}
+
+
+message UpdateQuoteCount {
+  int32 count = 1;
+  bool hasUpdated= 2;
+}
+message RemoveQuoteCount {
+  int32 count = 1;
+  bool hasDeleted = 2;
 }
 
 message Quote {
