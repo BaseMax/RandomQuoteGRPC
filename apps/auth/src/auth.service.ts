@@ -1,10 +1,17 @@
-import { LoginDto, USERS_SERVICE_NAME, UsersServiceClient } from '@app/common';
+import {
+  AuthToken,
+  AuthUser,
+  LoginDto,
+  USERS_SERVICE_NAME,
+  UsersServiceClient,
+} from '@app/common';
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
 import { ClientGrpc } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';
 import * as bcrypt from 'bcrypt';
-import { signToken } from './jwt';
+import { signToken, verifyToken } from './jwt';
 import { GrpcUnauthenticatedException } from 'nestjs-grpc-exceptions';
+import { IJwtPayload } from './interfaces';
 
 @Injectable()
 export class AuthService implements OnModuleInit {
@@ -24,8 +31,6 @@ export class AuthService implements OnModuleInit {
       this.usersService.findOneUserByUsername({ username }),
     );
 
-    console.log({ user });
-
     if (!user.username)
       throw new GrpcUnauthenticatedException('wrong credentials');
 
@@ -37,5 +42,18 @@ export class AuthService implements OnModuleInit {
     const token = await signToken(payload);
 
     return { token };
+  }
+
+  async verifyAccessToken(request: AuthToken): Promise<AuthUser> {
+    try {
+      const result = (await verifyToken(request.token)) as IJwtPayload;
+      return lastValueFrom(
+        this.usersService.findOneUserByUsername({
+          username: result.username,
+        }),
+      );
+    } catch (error) {
+      throw new GrpcUnauthenticatedException('invalid token');
+    }
   }
 }

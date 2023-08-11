@@ -4,6 +4,12 @@ package auth;
 
 service AuthService {
   rpc Login(LoginDto) returns (AuthToken) {}
+  rpc verifyAccessToken(AuthToken) returns (AuthUser) {}
+}
+
+message AuthUser {
+  string id = 1;
+  string username = 2;
 }
 
 message AuthToken {
