@@ -16,6 +16,9 @@ import { Observable } from 'rxjs';
 @QuoteServiceControllerMethods()
 export class QuoteController implements QuoteServiceController {
   constructor(private readonly quoteService: QuoteService) {}
+  randDomQuote(): Quote | Promise<Quote> | Observable<Quote> {
+    return this.quoteService.findRandom();
+  }
   findOneQuoteById(
     request: FindOneQuoteByIdDto,
   ): Quote | Promise<Quote> | Observable<Quote> {

@@ -40,4 +40,9 @@ export class QuoteService {
       hasUpdated: quote.acknowledged,
     };
   }
+
+  async findRandom() {
+    const result = await this.quoteModel.aggregate([{ $sample: { size: 1 } }]);
+    return result[0];
+  }
 }

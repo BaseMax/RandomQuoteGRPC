@@ -4,11 +4,13 @@ package quote;
 
 service QuoteService {
     rpc FindOneQuoteById (FindOneQuoteByIdDto) returns (Quote) {};
+    rpc RandDomQuote(Empty) returns (Quote) {}
     rpc CreateQuote(CreateQuoteDto) returns (Quote){}
     rpc RemoveQuoteById(FindOneQuoteByIdDto) returns (RemoveQuoteCount) {}
     rpc UpdateQuote(UpdateQuoteDto) returns (UpdateQuoteCount){}
 }
 
+message Empty {}
 
 message UpdateQuoteCount {
   int32 count = 1;
