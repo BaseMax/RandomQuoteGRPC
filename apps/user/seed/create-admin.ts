@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker';
 import mongoose, { model } from 'mongoose';
 import * as bcrypt from 'bcrypt';
+import { ROLE } from '../src/user.model';
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -22,6 +23,7 @@ async function main() {
   const createUserDto = {
     username: faker.internet.userName(),
     password: faker.internet.password(),
+    role: ROLE.ADMIN,
   };
   const rawPassword = createUserDto.password;
 
@@ -31,6 +33,7 @@ async function main() {
   const user = new userService(createUserDto);
   await user.save();
   console.log({ ...createUserDto, password: rawPassword });
+  console.log({ user });
 
   console.log('User created successfully!');
   return 0;

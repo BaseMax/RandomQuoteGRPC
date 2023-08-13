@@ -3,6 +3,7 @@ import { CreateQuoteDto } from './dto/create-quote.dto';
 import { UpdateQuoteDto } from './dto/update-quote.dto';
 import { QUOTE_SERVICE_NAME, QuoteServiceClient } from '@app/common';
 import { ClientGrpc } from '@nestjs/microservices';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class QuoteService implements OnModuleInit {
@@ -19,7 +20,7 @@ export class QuoteService implements OnModuleInit {
   }
 
   findRandom() {
-    return this.quoteService.randDomQuote({});
+    return lastValueFrom(this.quoteService.randDomQuote({}));
   }
 
   findOne(id: string) {

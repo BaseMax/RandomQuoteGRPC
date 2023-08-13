@@ -1,7 +1,8 @@
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
-import { Empty } from './user';
+
+export interface Empty {}
 
 export interface UpdateQuoteCount {
   count: number;
@@ -14,7 +15,6 @@ export interface RemoveQuoteCount {
 }
 
 export interface Quote {
-  id: string;
   content: string;
   author: string;
 }

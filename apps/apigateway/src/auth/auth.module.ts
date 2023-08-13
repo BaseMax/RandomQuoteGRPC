@@ -5,6 +5,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 import { AUTH_PACKAGE_NAME } from '@app/common';
 import { join } from 'path';
 import { JwtGuard } from './guard';
+import { AUTH_PORT } from '@app/common/constants';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { JwtGuard } from './guard';
         name: 'AUTH_PACKAGE',
         transport: Transport.GRPC,
         options: {
-          url: '0.0.0.0:3001',
+          url: `0.0.0.0:${AUTH_PORT}`,
           package: AUTH_PACKAGE_NAME,
           protoPath: join(__dirname, '../../auth/auth.proto'),
         },
@@ -29,7 +30,7 @@ import { JwtGuard } from './guard';
         name: 'AUTH_PACKAGE',
         transport: Transport.GRPC,
         options: {
-          url: '0.0.0.0:3001',
+          url: `0.0.0.0:${AUTH_PORT}`,
           package: AUTH_PACKAGE_NAME,
           protoPath: join(__dirname, '../../auth/auth.proto'),
         },

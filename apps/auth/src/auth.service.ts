@@ -47,11 +47,13 @@ export class AuthService implements OnModuleInit {
   async verifyAccessToken(request: AuthToken): Promise<AuthUser> {
     try {
       const result = (await verifyToken(request.token)) as IJwtPayload;
-      return lastValueFrom(
+
+      const user = await lastValueFrom(
         this.usersService.findOneUserByUsername({
           username: result.username,
         }),
       );
+      return { id: user.id, username: user.username, role: user.role };
     } catch (error) {
       throw new GrpcUnauthenticatedException('invalid token');
     }

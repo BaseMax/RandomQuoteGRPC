@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
+import { Empty } from './quote';
 
 export interface RemoveUserCount {
   count: number;
@@ -15,8 +16,6 @@ export interface FindOneUserByUsernameDto {
   username: string;
 }
 
-export interface Empty {}
-
 export interface Users {
   users: User[];
 }
@@ -30,6 +29,7 @@ export interface User {
   id: string;
   username: string;
   password: string;
+  role: number;
 }
 
 export const USER_PACKAGE_NAME = 'user';

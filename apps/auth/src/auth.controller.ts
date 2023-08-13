@@ -21,6 +21,8 @@ export class AuthController implements AuthServiceController {
   login(
     request: LoginDto,
   ): AuthToken | Promise<AuthToken> | Observable<AuthToken> {
+    console.log('LOGIN CONTROLLER');
+
     return this.authService.login(request);
   }
 }

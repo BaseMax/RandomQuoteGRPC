@@ -24,6 +24,7 @@ export class JwtGuard implements CanActivate, OnModuleInit {
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const token = this.extractToken(context);
+
     if (!token) throw new UnauthorizedException('invalid token');
 
     try {
@@ -31,6 +32,8 @@ export class JwtGuard implements CanActivate, OnModuleInit {
       const user = await lastValueFrom(
         this.authService.verifyAccessToken({ token }),
       );
+
+      console.log({ user });
 
       this.attachPayload(context, user);
     } catch {
@@ -51,6 +54,8 @@ export class JwtGuard implements CanActivate, OnModuleInit {
 
   private extractTokenFromHeader(request: Request): string | undefined {
     const [type, token] = request.headers.authorization?.split(' ') ?? [];
+    console.log({ token, type, t: request.headers.authorization });
+
     return type === 'Bearer' ? token : undefined;
   }
 }

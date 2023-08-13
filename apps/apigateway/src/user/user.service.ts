@@ -23,6 +23,8 @@ export class UserService implements OnModuleInit {
   }
 
   findOne(id: string) {
+    console.log({ id });
+
     return this.userService.findOneUserById({ id });
   }
 

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 export interface AuthUser {
   id: string;
   username: string;
+  role: number;
 }
 
 export interface AuthToken {

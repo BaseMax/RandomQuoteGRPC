@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { APP_FILTER } from '@nestjs/core';
 import { GrpcServerExceptionFilter } from 'nestjs-grpc-exceptions';
+import { USER_PORT } from '@app/common/constants';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { GrpcServerExceptionFilter } from 'nestjs-grpc-exceptions';
         name: 'USER_PACKAGE',
         transport: Transport.GRPC,
         options: {
-          url: '0.0.0.0:3002',
+          url: `0.0.0.0:${USER_PORT}`,
           package: USER_PACKAGE_NAME,
           protoPath: join(__dirname, '../user.proto'),
         },

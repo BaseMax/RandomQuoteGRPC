@@ -39,5 +39,6 @@ message User {
   string id = 1;
   string username = 2;
   string password = 3;
+  int32 role = 4;
 }
 

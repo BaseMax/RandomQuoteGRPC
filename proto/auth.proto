@@ -10,6 +10,7 @@ service AuthService {
 message AuthUser {
   string id = 1;
   string username = 2;
+  int32 role = 3;
 }
 
 message AuthToken {
