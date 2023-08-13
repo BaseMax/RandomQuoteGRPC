@@ -1,13 +1,36 @@
-# Random Quote Generator using gRPC (TypeScript)
+# Random Quote Generator using gRPC (TypeScript, Nestjs)
 
-The Random Quote Generator server is built using TypeScript and gRPC. It defines a gRPC service with a single method called GetRandomQuote, which, when invoked by a client, responds with a randomly selected quote from a predefined list. The server listens for incoming requests on port 50051 by default.
+This app is composed of three services based on the gRPC protocol: User, Auth, and Quote. These services communicate with each other and clients via the gRPC protocol and admin can manage users(editor) and quotes and users can get random quotes.
 
-## Prerequisites
+**User Service**
+The User Service provides functionality related to managing user(quote editor) information.
+Methods:
 
-Before running the Random Quote Generator server, make sure you have the following prerequisites installed:
+- findOneById
+- findOneByUsername
+- createUser
+- removeUser
 
-- Node.js (14.x or later)
-- npm (Node Package Manager)
+**Auth Service**
+The Auth Service handles user authentication and authorization.
+Methods:
+
+- login
+- verifyToken
+
+**Quote Service**
+The Quote Service retrieves and manages quotes.
+
+- findOneQuoteById
+- randDomQuote
+- createQuote
+- removeQuoteById
+- updateQuote
+
+**Proto Files**
+for more info about methods and input/output types check out proto directory
+
+![diagram](./docs/diagram.png)
 
 ## Installation
 
@@ -26,134 +49,31 @@ npm install
 
 ## Usage
 
-Compile the .proto file and generate gRPC TypeScript code:
+Transpile the .proto file and generate gRPC TypeScript code.
+proto files have already transpile libs/common/types, but if you change anything you can use:
 
 ```bash
-npm run build:grpc
+protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=<output> --ts_proto_opt=nestJs=true <path/to/proto/file>
 ```
 
 This command will generate the necessary TypeScript files from the .proto file.
 
+**Create Admin:**
+
+```bash
+ts-node apps/user/seed/create-admin.ts
+```
+
 **Start the server:**
 
 ```bash
-npm start
+npm run start:dev user
+npm run start:dev auth
+npm run start:dev quote
+npm run start:dev
 ```
 
-The server will start and listen on port 50051.
-
-**Request a random quote using a gRPC client:**
-
-Create a client that sends a request to the server to get a random quote. You can use any gRPC client to achieve this. For a TypeScript client, you can use the following code snippet:
-
-```typescript
-import * as grpc from '@grpc/grpc-js';
-import { QuoteGeneratorClient } from './generated/quote_generator_grpc_pb';
-import { Empty } from './generated/quote_generator_pb';
-
-const client = new QuoteGeneratorClient(
-  'localhost:50051',
-  grpc.credentials.createInsecure(),
-);
-
-client.getRandomQuote(new Empty(), (err, response) => {
-  if (err) {
-    console.error('Error:', err.message);
-  } else {
-    console.log('Random Quote:', response.getQuote());
-  }
-});
-```
-
-**Run the client script to get a random quote:**
-
-```bash
-npm run client
-```
-
-You should see a randomly selected quote printed on the console.
-
-## More about?
-
-### Example 1: Start the Server
-
-```bash
-npm start
-```
-
-This command starts the gRPC server, and it will listen on port 50051 by default.
-
-### Example 2: Request a Random Quote - Client
-
-```typescript
-// client.ts
-
-import * as grpc from '@grpc/grpc-js';
-import { QuoteGeneratorClient } from './generated/quote_generator_grpc_pb';
-import { Empty } from './generated/quote_generator_pb';
-
-const client = new QuoteGeneratorClient(
-  'localhost:50051',
-  grpc.credentials.createInsecure(),
-);
-
-client.getRandomQuote(new Empty(), (err, response) => {
-  if (err) {
-    console.error('Error:', err.message);
-  } else {
-    console.log('Random Quote:', response.getQuote());
-  }
-});
-```
-
-To run the client:
-
-```bash
-npm run client
-```
-
-This client script will connect to the gRPC server and request a random quote. The server will respond with a randomly selected quote, and the client will print it to the console.
-
-### Example 3: Server-side Interceptor
-
-```typescript
-// server_interceptor.ts
-
-import * as grpc from '@grpc/grpc-js';
-import { QuoteGeneratorClient } from './generated/quote_generator_grpc_pb';
-import { Empty } from './generated/quote_generator_pb';
-
-function quoteInterceptor(
-  options: grpc.InterceptorOptions,
-  nextHandler: grpc.InterceptorNext<QuoteGeneratorClient>,
-): grpc.InterceptorHandle<QuoteGeneratorClient> {
-  return new grpc.InterceptingCall(nextHandler(options), {
-    start: (metadata, listener, next) => {
-      console.log('Incoming request for a random quote.');
-      next(metadata, listener);
-    },
-    sendMessage: (message, next) => {
-      console.log('Sending quote response:', message.toObject());
-      next(message);
-    },
-    receiveMessage: (message, next) => {
-      console.log('Received quote response:', message.toObject());
-      next(message);
-    },
-    halfClose: (next) => {
-      console.log('Client closed the stream.');
-      next();
-    },
-    cancel: (message, next) => {
-      console.log('RPC canceled by the client.');
-      next(message);
-    },
-  });
-}
-
-// Add the interceptor to the server
-server.addService(QuoteGeneratorService, { getRandomQuote: quoteInterceptor });
-```
+The server will start and listen on port 3000.
 
 ## Contributing
 
