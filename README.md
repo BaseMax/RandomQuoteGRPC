@@ -44,8 +44,8 @@ To access the services through the API Gateway, send an HTTP request to the appr
 Clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/apigateway-generator-grpc.git
-cd apigateway-generator-grpc
+git clone https://github.com/BaseMax/RandomQuoteGRPC
+cd RandomQuoteGRPC
 ```
 
 Install the required dependencies:
