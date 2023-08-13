@@ -12,7 +12,7 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto';
 import { JwtGuard } from '../auth/guard';
 import { Roles, RolesGuard } from '../auth/guard/role.guard';
-import { ROLE } from 'apps/user/src/user.model';
+import { ROLE } from '../../../user/src/user.model';
 import { GrpcToHttpInterceptor } from 'nestjs-grpc-exceptions';
 
 @UseInterceptors(GrpcToHttpInterceptor)

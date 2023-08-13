@@ -15,8 +15,8 @@ import { Quote, RemoveQuoteCount, UpdateQuoteCount } from '@app/common';
 import { Observable } from 'rxjs';
 import { JwtGuard } from '../auth/guard';
 import { Roles, RolesGuard } from '../auth/guard/role.guard';
-import { ROLE } from 'apps/user/src/user.model';
 import { GrpcToHttpInterceptor } from 'nestjs-grpc-exceptions';
+import { ROLE } from '../../../user/src/user.model';
 
 @Controller('quote')
 @UseInterceptors(GrpcToHttpInterceptor)
