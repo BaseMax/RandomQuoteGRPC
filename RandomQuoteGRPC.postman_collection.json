@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "ddab1748-e263-443f-82a3-b30c5a4600cc",
+		"name": "RandomQuoteGRPC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23340629"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Magdalena59\",\n    \"password\": \"DA1X0ccirIJKdEy\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{http_url}}/auth/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Remove User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{http_url}}/user/64d8c018daf426483a277fc0"
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"aliw\",\n    \"password\": \"HELLOasdasd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{http_url}}/user/"
+					},
+					"response": []
+				},
+				{
+					"name": "Find All Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{http_url}}/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Find One User By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{http_url}}/user/64d8a17e4747526404008ab0"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quote",
+			"item": [
+				{
+					"name": "Get Random Quote",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{http_url}}/quote/random"
+					},
+					"response": []
+				},
+				{
+					"name": "Find One Quote",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{http_url}}/quote/64d89df97a4487ed8c80c170"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Quote",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"random quote\",\n    \"author\": \"random author\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{http_url}}/quote/"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Quote",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{http_url}}/quote/64d89df97a4487ed8c80c175"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Quote",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"some quote\",\n    \"author\": \"mohammad\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{http_url}}/quote/64d7adbb18689ed5c7f2cf8b"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "http_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hZ2RhbGVuYTU5IiwiaWF0IjoxNjkxOTE5MDE2LCJleHAiOjE2OTIwMDU0MTZ9.KxMLV8pyLFSw3uuS2diD8oOT2S-CDTV93Kg1c5UunF4",
+			"type": "string"
+		}
+	]
+}

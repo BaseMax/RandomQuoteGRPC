@@ -30,6 +30,13 @@ The Quote Service retrieves and manages quotes.
 **Proto Files**
 for more info about methods and input/output types check out proto directory
 
+**API Gateway**
+The API Gateway serves as an entry point for clients to communicate with the gRPC services. It translates HTTP requests to gRPC requests and vice versa.
+
+- Port: 3000
+
+To access the services through the API Gateway, send an HTTP request to the appropriate API endpoint, import `RandomQuoteGRPC.postman_collection.json` to Postman
+
 ![diagram](./docs/diagram.png)
 
 ## Installation
