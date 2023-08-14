@@ -37,7 +37,19 @@ The API Gateway serves as an entry point for clients to communicate with the gRP
 
 To access the services through the API Gateway, send an HTTP request to the appropriate API endpoint, import `RandomQuoteGRPC.postman_collection.json` to Postman
 
-![diagram](./docs/diagram.png)
+![diagram](./screenshots/diagram.png)
+
+## Demo
+
+![all request](./screenshots/all.png)
+![create quote](./screenshots/create_quote.png)
+![delete quote](./screenshots/delete_quote.png)
+![random quote](./screenshots/quote_random.png)
+![quote by id](./screenshots/quote_by_id_not_found.png)
+![quote by id](./screenshots/quote_by_id.png)
+![update quote](./screenshots/update_quote.png)
+![login user](./screenshots/update_quote.png)
+![get all users](./screenshots/get_all_users.png)
 
 ## Installation
 
