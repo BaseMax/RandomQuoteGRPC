@@ -1,6 +1,6 @@
 # Random Quote Generator using gRPC (TypeScript, Nestjs)
 
-This app is composed of three services based on the gRPC protocol: User, Auth, and Quote. These services communicate with each other and clients via the gRPC protocol and admin can manage users(editor) and quotes and users can get random quotes.
+This application consists of three distinct services, all built upon the efficient gRPC protocol: User, Auth, and Quote. These services seamlessly interact with both one another and clients through the advanced gRPC protocol. The administrative role, held by editors, empowers them to oversee user management and quote administration. Meanwhile, users enjoy the ability to access random quotes, adding an element of serendipity to their experience.
 
 **User Service**
 
