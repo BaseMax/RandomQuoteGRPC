@@ -3,6 +3,7 @@
 This app is composed of three services based on the gRPC protocol: User, Auth, and Quote. These services communicate with each other and clients via the gRPC protocol and admin can manage users(editor) and quotes and users can get random quotes.
 
 **User Service**
+
 The User Service provides functionality related to managing user(quote editor) information.
 Methods:
 
@@ -12,6 +13,7 @@ Methods:
 - removeUser
 
 **Auth Service**
+
 The Auth Service handles user authentication and authorization.
 Methods:
 
@@ -19,6 +21,7 @@ Methods:
 - verifyToken
 
 **Quote Service**
+
 The Quote Service retrieves and manages quotes.
 
 - findOneQuoteById
@@ -28,9 +31,11 @@ The Quote Service retrieves and manages quotes.
 - updateQuote
 
 **Proto Files**
+
 for more info about methods and input/output types check out proto directory
 
 **API Gateway**
+
 The API Gateway serves as an entry point for clients to communicate with the gRPC services. It translates HTTP requests to gRPC requests and vice versa.
 
 - Port: 3000
@@ -42,13 +47,21 @@ To access the services through the API Gateway, send an HTTP request to the appr
 ## Demo
 
 ![all request](./screenshots/all.png)
+
 ![create quote](./screenshots/create_quote.png)
+
 ![delete quote](./screenshots/delete_quote.png)
+
 ![random quote](./screenshots/quote_random.png)
+
 ![quote by id](./screenshots/quote_by_id_not_found.png)
+
 ![quote by id](./screenshots/quote_by_id.png)
+
 ![update quote](./screenshots/update_quote.png)
+
 ![login user](./screenshots/update_quote.png)
+
 ![get all users](./screenshots/get_all_users.png)
 
 ## Installation
@@ -92,7 +105,7 @@ npm run start:dev quote
 npm run start:dev
 ```
 
-The server will start and listen on port 3000.
+The server will start and listen on port **3000**.
 
 ## Contributing
 
