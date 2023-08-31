@@ -1453,6 +1453,14 @@ packages:
       - supports-color
     dev: false
 
+  /@mongodb-js/saslprep@1.1.0:
+    resolution: {integrity: sha512-Xfijy7HvfzzqiOAhAepF4SGN5e9leLkMvg/OPOF97XemjfVCYN/oWa75wnkc6mltMSTwY+XlbhWgUOJmkFspSw==}
+    requiresBuild: true
+    dependencies:
+      sparse-bitfield: 3.0.3
+    dev: true
+    optional: true
+
   /@nestjs/cli@10.0.0:
     resolution: {integrity: sha512-14pju3ejAAUpFe1iK99v/b7Bw96phBMV58GXTSm3TcdgaI4O7UTLXTbMiUNyU+LGr/1CPIfThcWqFyKhDIC9VQ==}
     engines: {node: '>= 16'}
@@ -5349,7 +5357,7 @@ packages:
       get-port: 5.1.1
       https-proxy-agent: 5.0.1
       md5-file: 5.0.0
-      mongodb: 4.16.0
+      mongodb: 4.17.1
       new-find-package-json: 2.0.0
       semver: 7.5.4
       tar-stream: 2.2.0
@@ -5373,8 +5381,8 @@ packages:
       - supports-color
     dev: true
 
-  /mongodb@4.16.0:
-    resolution: {integrity: sha512-0EB113Fsucaq1wsY0dOhi1fmZOwFtLOtteQkiqOXGklvWMnSH3g2QS53f0KTP+/6qOkuoXE2JksubSZNmxeI+g==}
+  /mongodb@4.17.1:
+    resolution: {integrity: sha512-MBuyYiPUPRTqfH2dV0ya4dcr2E5N52ocBuZ8Sgg/M030nGF78v855B3Z27mZJnp8PxjnUquEnAtjOsphgMZOlQ==}
     engines: {node: '>=12.9.0'}
     dependencies:
       bson: 4.7.2
@@ -5382,7 +5390,7 @@ packages:
       socks: 2.7.1
     optionalDependencies:
       '@aws-sdk/credential-providers': 3.389.0
-      saslprep: 1.0.3
+      '@mongodb-js/saslprep': 1.1.0
     transitivePeerDependencies:
       - aws-crt
     dev: true
@@ -6063,6 +6071,7 @@ packages:
     requiresBuild: true
     dependencies:
       sparse-bitfield: 3.0.3
+    dev: false
     optional: true
 
   /schema-utils@3.3.0:
