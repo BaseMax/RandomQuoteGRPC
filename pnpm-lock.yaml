@@ -27,14 +27,14 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1)(reflect-metadata@0.1.13)(rxjs@7.8.1))
       '@nestjs/mapped-types':
-        specifier: ^0.0.1
+        specifier: '*'
         version: 0.0.1(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)
       '@nestjs/microservices':
         specifier: ^11.1.19
         version: 11.1.19(@grpc/grpc-js@1.9.15)(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1)(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/mongoose':
         specifier: ^10.0.1
-        version: 10.0.1(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1)(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)(mongoose@7.8.9(@aws-sdk/credential-providers@3.389.0))(reflect-metadata@0.1.13)(rxjs@7.8.1)
+        version: 10.0.1(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1)(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)(mongoose@7.8.10(@aws-sdk/credential-providers@3.389.0))(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/platform-express':
         specifier: ^10.0.0
         version: 10.0.0(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1)(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)
@@ -51,8 +51,8 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1
       mongoose:
-        specifier: ^7.8.9
-        version: 7.8.9(@aws-sdk/credential-providers@3.389.0)
+        specifier: ^7.8.10
+        version: 7.8.10(@aws-sdk/credential-providers@3.389.0)
       nestjs-grpc-exceptions:
         specifier: ^0.2.1
         version: 0.2.1(@grpc/grpc-js@1.9.15)(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1)(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)(@nestjs/microservices@11.1.19)
@@ -703,8 +703,8 @@ packages:
       '@cfworker/json-schema':
         optional: true
 
-  '@mongodb-js/saslprep@1.4.11':
-    resolution: {integrity: sha512-o9rAHc0IpIjuPSxRutWpE1F62x7n+4mVS4rCNHkzhIUMQcc18bb6xEq5wd2NdN0WjepIyXIppRshYI2kQDOZVA==}
+  '@mongodb-js/saslprep@1.4.13':
+    resolution: {integrity: sha512-E3Sv4eCYAlKYUTx8S3ioQcDUscOif+8zZ5OnW1IzJ+Tt+EO+ke8mn+Y3FX6N1H79picwbdOavVOb1jPi2EOyrg==}
 
   '@nestjs/cli@10.0.0':
     resolution: {integrity: sha512-14pju3ejAAUpFe1iK99v/b7Bw96phBMV58GXTSm3TcdgaI4O7UTLXTbMiUNyU+LGr/1CPIfThcWqFyKhDIC9VQ==}
@@ -2409,8 +2409,8 @@ packages:
     resolution: {integrity: sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==}
     engines: {node: '>= 0.10'}
 
-  ip-address@10.2.0:
-    resolution: {integrity: sha512-/+S6j4E9AHvW9SWMSEY9Xfy66O5PWvVEJ08O0y5JGyEKQpojb0K0GKpz/v5HJ/G0vi3D2sjGK78119oXZeE0qA==}
+  ip-address@10.3.1:
+    resolution: {integrity: sha512-1e9d3kb97NHJTIJDZW9rKqW2h6+dFa50Dy0fpPSMQp2ADje5gvKsXmdiK6dwY5t76TaTt5+P5N1Y/LoToIxP6g==}
     engines: {node: '>= 12'}
 
   ipaddr.js@1.9.1:
@@ -2963,8 +2963,8 @@ packages:
       snappy:
         optional: true
 
-  mongoose@7.8.9:
-    resolution: {integrity: sha512-V3GBAJbmOAdzEP8murOvlg7q1szlbe4jTBRyW+JBHRduJBe7F9dk5eyqJDTuYrdBcOOWfLbr6AgXrDK7F0/o5A==}
+  mongoose@7.8.10:
+    resolution: {integrity: sha512-d+ASyz9FjXnzA9yrgbiAKP3DX//i0QA7TgSOPmU/ONqbUP7v8tg5HbbY28a7wtOKiPYSaP605JoRLFelU7wKxA==}
     engines: {node: '>=14.20.1'}
 
   mpath@0.9.0:
@@ -4950,7 +4950,7 @@ snapshots:
       - hono
       - supports-color
 
-  '@mongodb-js/saslprep@1.4.11':
+  '@mongodb-js/saslprep@1.4.13':
     dependencies:
       sparse-bitfield: 3.0.3
     optional: true
@@ -5034,11 +5034,11 @@ snapshots:
     optionalDependencies:
       '@grpc/grpc-js': 1.9.15
 
-  '@nestjs/mongoose@10.0.1(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1)(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)(mongoose@7.8.9(@aws-sdk/credential-providers@3.389.0))(reflect-metadata@0.1.13)(rxjs@7.8.1)':
+  '@nestjs/mongoose@10.0.1(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1)(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)(mongoose@7.8.10(@aws-sdk/credential-providers@3.389.0))(reflect-metadata@0.1.13)(rxjs@7.8.1)':
     dependencies:
       '@nestjs/common': 11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/core': 11.1.18(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1)(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/microservices@11.1.19)(@nestjs/platform-express@10.0.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
-      mongoose: 7.8.9(@aws-sdk/credential-providers@3.389.0)
+      mongoose: 7.8.10(@aws-sdk/credential-providers@3.389.0)
       reflect-metadata: 0.1.13
       rxjs: 7.8.1
 
@@ -6972,7 +6972,7 @@ snapshots:
 
   interpret@1.4.0: {}
 
-  ip-address@10.2.0: {}
+  ip-address@10.3.1: {}
 
   ipaddr.js@1.9.1: {}
 
@@ -7638,7 +7638,7 @@ snapshots:
       socks: 2.8.9
     optionalDependencies:
       '@aws-sdk/credential-providers': 3.389.0
-      '@mongodb-js/saslprep': 1.4.11
+      '@mongodb-js/saslprep': 1.4.13
     transitivePeerDependencies:
       - aws-crt
 
@@ -7649,9 +7649,9 @@ snapshots:
       socks: 2.8.9
     optionalDependencies:
       '@aws-sdk/credential-providers': 3.389.0
-      '@mongodb-js/saslprep': 1.4.11
+      '@mongodb-js/saslprep': 1.4.13
 
-  mongoose@7.8.9(@aws-sdk/credential-providers@3.389.0):
+  mongoose@7.8.10(@aws-sdk/credential-providers@3.389.0):
     dependencies:
       bson: 5.5.1
       kareem: 2.5.1
@@ -8195,7 +8195,7 @@ snapshots:
 
   socks@2.8.9:
     dependencies:
-      ip-address: 10.2.0
+      ip-address: 10.3.1
       smart-buffer: 4.2.0
 
   source-map-support@0.5.13:
