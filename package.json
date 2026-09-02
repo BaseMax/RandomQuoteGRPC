@@ -20,7 +20,7 @@
     "test:e2e": "jest --config ./apps/apigateway/test/jest-e2e.json"
   },
   "dependencies": {
-    "@faker-js/faker": "^8.0.2",
+    "@faker-js/faker": "^10.5.0",
     "@grpc/grpc-js": "^1.9.15",
     "@grpc/proto-loader": "^0.7.8",
     "@nestjs/common": "^11.0.16",
