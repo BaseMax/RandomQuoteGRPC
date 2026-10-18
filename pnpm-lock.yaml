@@ -34,7 +34,7 @@ importers:
         version: 11.2.5(@grpc/grpc-js@1.13.6)(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1(supports-color@8.1.1))(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/mongoose':
         specifier: ^10.0.1
-        version: 10.0.1(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1(supports-color@8.1.1))(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)(mongoose@7.8.9(@aws-sdk/credential-providers@3.389.0)(supports-color@8.1.1))(reflect-metadata@0.1.13)(rxjs@7.8.1)
+        version: 10.0.1(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1(supports-color@8.1.1))(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)(mongoose@7.8.10(@aws-sdk/credential-providers@3.389.0)(supports-color@8.1.1))(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/platform-express':
         specifier: ^10.0.0
         version: 10.0.0(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1(supports-color@8.1.1))(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)(supports-color@8.1.1)
@@ -51,8 +51,8 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1
       mongoose:
-        specifier: ^7.8.9
-        version: 7.8.9(@aws-sdk/credential-providers@3.389.0)(supports-color@8.1.1)
+        specifier: ^7.8.10
+        version: 7.8.10(@aws-sdk/credential-providers@3.389.0)(supports-color@8.1.1)
       nestjs-grpc-exceptions:
         specifier: ^0.2.1
         version: 0.2.1(@grpc/grpc-js@1.13.6)(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1(supports-color@8.1.1))(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)(@nestjs/microservices@11.2.5)
@@ -2958,8 +2958,8 @@ packages:
       snappy:
         optional: true
 
-  mongoose@7.8.9:
-    resolution: {integrity: sha512-V3GBAJbmOAdzEP8murOvlg7q1szlbe4jTBRyW+JBHRduJBe7F9dk5eyqJDTuYrdBcOOWfLbr6AgXrDK7F0/o5A==}
+  mongoose@7.8.10:
+    resolution: {integrity: sha512-d+ASyz9FjXnzA9yrgbiAKP3DX//i0QA7TgSOPmU/ONqbUP7v8tg5HbbY28a7wtOKiPYSaP605JoRLFelU7wKxA==}
     engines: {node: '>=14.20.1'}
 
   mpath@0.9.0:
@@ -5026,11 +5026,11 @@ snapshots:
     optionalDependencies:
       '@grpc/grpc-js': 1.13.6
 
-  '@nestjs/mongoose@10.0.1(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1(supports-color@8.1.1))(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)(mongoose@7.8.9(@aws-sdk/credential-providers@3.389.0)(supports-color@8.1.1))(reflect-metadata@0.1.13)(rxjs@7.8.1)':
+  '@nestjs/mongoose@10.0.1(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1(supports-color@8.1.1))(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/core@11.1.18)(mongoose@7.8.10(@aws-sdk/credential-providers@3.389.0)(supports-color@8.1.1))(reflect-metadata@0.1.13)(rxjs@7.8.1)':
     dependencies:
       '@nestjs/common': 11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1(supports-color@8.1.1))(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/core': 11.1.18(@nestjs/common@11.0.16(class-transformer@0.5.1)(class-validator@0.14.0)(file-type@20.4.1(supports-color@8.1.1))(reflect-metadata@0.1.13)(rxjs@7.8.1))(@nestjs/microservices@11.2.5)(@nestjs/platform-express@10.0.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
-      mongoose: 7.8.9(@aws-sdk/credential-providers@3.389.0)(supports-color@8.1.1)
+      mongoose: 7.8.10(@aws-sdk/credential-providers@3.389.0)(supports-color@8.1.1)
       reflect-metadata: 0.1.13
       rxjs: 7.8.1
 
@@ -7652,7 +7652,7 @@ snapshots:
       '@aws-sdk/credential-providers': 3.389.0
       '@mongodb-js/saslprep': 1.4.11
 
-  mongoose@7.8.9(@aws-sdk/credential-providers@3.389.0)(supports-color@8.1.1):
+  mongoose@7.8.10(@aws-sdk/credential-providers@3.389.0)(supports-color@8.1.1):
     dependencies:
       bson: 5.5.1
       kareem: 2.5.1
